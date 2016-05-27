@@ -1,0 +1,27 @@
+{   "contacts":{
+    "contact0":{
+        "lastName":"Shmoe",
+        "firstName":"Joe",
+        "phone":"615-675-2098",
+        "city": "Nashville",
+        "state": "TN",
+        "zipcode": "12345"
+      },
+      "contact1":{
+        "lastName":"I am",
+        "firstName":"Sam",
+        "phone":"111-222-3333",
+        "city": "SuessVille",
+        "state": "WY",
+        "zipcode": "09876"
+      },
+    "contact2":{
+        "lastName":"Upender",
+        "firstName":"Dhru",
+        "phone":"123-456-7890",
+        "city": "Manhattan",
+        "state": "NY",
+        "zipcode": "11754"
+      }
+    }
+}      

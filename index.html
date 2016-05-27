@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AddressBook App</title>
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">  
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body  ng-app="AddressBook">
+<nav class="navbar navbar-default" ng-controller="NavCtrl">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">AddressBook App</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems">
+        <li><a href="#">{{thingy.name}}</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div ng-controller="AddressCtrl">
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <button class="col-xs-6 btn btn-success" ng-click="newContactButton()">New Contact</button>
+        <button class="col-xs-6 btn btn-info" ng-click="allContact()"> All Contacts</button>
+    </div>    
+</div>
+<div class="row">
+<div class="col-xs-10 col-xs-offset-1 main-container">
+    <div class="col-xs-12" ng-show="showListView">
+        <h1>Contact List</h1>  
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="thingy in contacts | filter: searchText">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-1"><input type="checkbox" name=""/></div>
+                    <div class="col-xs-3">{{thingy.lastName}}</div>
+                    <div class="col-xs-2">{{thingy.firstName}}</div>
+                    <div class="col-xs-2">{{thingy.phone}}</div> 
+                    <div class="col-xs-1">{{thingy.city}}</div>            
+                    <div class="col-xs-1">{{thingy.state}}</div>            
+                    <div class="col-xs-1">{{thingy.zipcode}}</div>            
+                    <div class="col-xs-1"><button class="btn btn-danger">X</button></div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+        <div class="col-xs-12" ng-show="!showListView">
+            <h1>New Contact</h1>
+            <form>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Smith" ng-model="newContact.lastName"/>
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="Boe" ng-model="newContact.firstName"/>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" placeholder="615-111-3452" ng-model="newContact.phone"/>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="Nashville" ng-model="newContact.city"/>
+                </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="TN" ng-model="newContact.state"/>
+                </div>
+                <div class="form-group">
+                    <label>Zipcode</label>
+                    <input type="text" class="form-control" placeholder="" ng-model="newContact.zipcode"/>
+                </div>
+                <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+                
+     <!-- {
+         id: 0,
+        lastName: "Shmoe",
+        firstName: "Joe",
+        phone:"615-675-2098",
+        city: "Nashville",
+        state: "TN",
+        zipcode: "12345"  
+        } -->
+  </div>
+
+<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+</body>
+</html>
