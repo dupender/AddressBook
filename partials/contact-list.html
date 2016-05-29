@@ -1,0 +1,27 @@
+
+    <h1>Contact List</h1>  
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="thingy in contacts | filter: searchText">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-1"><input type="checkbox" name=""/></div>
+                    <div class="col-xs-3">{{thingy.lastName}}</div>
+                    <div class="col-xs-2">{{thingy.firstName}}</div>
+                    <div class="col-xs-2">{{thingy.phone}}</div> 
+                    <div class="col-xs-1">{{thingy.city}}</div>            
+                    <div class="col-xs-1">{{thingy.state}}</div>            
+                    <div class="col-xs-1">{{thingy.zipcode}}</div>            
+                    <div class="col-xs-1"><button class="btn btn-danger">X</button></div>
+                </div>
+            </div>
+        </div>
+        

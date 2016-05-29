@@ -1,0 +1,28 @@
+<h1>New Contact</h1>
+            <form>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Smith" ng-model="newContact.lastName"/>
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="Boe" ng-model="newContact.firstName"/>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" placeholder="615-111-3452" ng-model="newContact.phone"/>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="Nashville" ng-model="newContact.city"/>
+                </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="TN" ng-model="newContact.state"/>
+                </div>
+                <div class="form-group">
+                    <label>Zipcode</label>
+                    <input type="text" class="form-control" placeholder="" ng-model="newContact.zipcode"/>
+                </div>
+                <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
+            </form>
