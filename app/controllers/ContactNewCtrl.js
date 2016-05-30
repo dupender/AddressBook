@@ -1,41 +1,19 @@
-app.controller("ContactNewCtrl", function($scope){
+app.controller("ContactNewCtrl", function($scope, $http, $location, contactStorage){
       $scope.welcome = "hello";
-      $scope.newContact = {};
-      $scope.contacts = [
-        {
-          id: 0,
-        lastName: "Shmoe",
-        firstName: "Joe",
-        phone:"615-675-2098",
-        city: "Nashville",
-        state: "TN",
-        zipcode: "12345"
+      $scope.newContact = {
+        lastName: "",
+        firstName: "",
+        phone:"",
+        city: "",
+        state: "",
+        zipcode: ""
         },
-        {
-          id: 1,
-        lastName:"I am",
-        firstName:"Sam",
-        phone:"111-222-3333",
-        city: "SuessVille",
-        state: "WY",
-        zipcode: "09876"
-        },
-        {
-          id: 2,
-        lastName: "Upender",
-        firstName: "Dhru",
-        phone: "123-456-7890",
-        city: "Manhattan",
-        state: "NY",
-        zipcode: "11754"
-        }
-      ];
-
-      $scope.addNewItem = function(){
-        $scope.newContact.isCompleted = false;
-        $scope.newContact.id = $scope.contacts.length;
-        console.log("you added a new contact", $scope.newContact);
-        $scope.contacts.push($scope.newContact);
-        $scope.newContact="";
-      };
+   
+  $scope.addNewContact = function(){
+        contactStorage.postNewContact($scope.newContact)
+            .then(function successCallback(response) {
+                console.log(response);
+                $location.url("/contacts/list");
+            });
+         };   
    });   
