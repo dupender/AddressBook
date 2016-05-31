@@ -10,7 +10,7 @@ app.config(function($routeProvider){
       templateUrl: 'partials/contact-new.html',
       controller: 'ContactNewCtrl'
     }).
-    when('/contacts/details', {
+    when('/contacts/:contactId', {
       templateUrl: 'partials/contact-details.html',
       controller: "ContactViewCtrl"
     }).
