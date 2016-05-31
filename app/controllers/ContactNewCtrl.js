@@ -1,5 +1,6 @@
 app.controller("ContactNewCtrl", function($scope, $http, $location, contactStorage){
       $scope.welcome = "hello";
+      $scope.submitButtonText = "New";
       $scope.newContact = {
         lastName: "",
         firstName: "",

@@ -1,5 +1,5 @@
 'use strict';
-app.factory("contactStorage", function($q, $http){
+app.factory("contactStorage", function($q, $http, firebaseURL){
   
   var getContactList = function(){
     let contacts = [];
@@ -58,6 +58,61 @@ app.factory("contactStorage", function($q, $http){
         });
   };
 
-  return {getContactList:getContactList, deleteContact:deleteContact, postNewContact:postNewContact};
+
+  var getSingleContact = function(contactId){
+    return $q(function(resolve, reject){
+      $http.get(firebaseURL + "contacts/"+ contactId +".json")
+        .success(function(contactObject){
+          resolve(contactObject);
+        })
+        .error(function(error){
+          reject(error);
+        });
+    });
+  }
+
+  var updateContact = function(contactId, newContact){
+        return $q(function(resolve, reject) {
+            $http.put(
+                firebaseURL + "contacts/" + contactId + ".json",
+                JSON.stringify({
+                    lastName: newContact.lastName,
+                    firstName: newContact.firstName,
+                    phone: newContact.phone,
+                    city: newContact.city,
+                    state: newContact.state,
+                    zipcode: newContact.zipcode
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
+        });
+  };
+
+    var updateCompletedStatus = function(newContact){
+        return $q(function(resolve, reject) {
+            $http.put(
+                firebaseURL + "contacts/" + newContact.id + ".json",
+                JSON.stringify({
+                    lastName: newContact.lastName,
+                    firstName: newContact.firstName,
+                    phone: newContact.phone,
+                    city: newContact.city,
+                    state: newContact.state,
+                    zipcode: newContact.zipcode
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
+        });
+  };
+
+  return {updateCompletedStatus:updateCompletedStatus, updateContact:updateContact, getSingleContact:getSingleContact, getContactList:getContactList, deleteContact:deleteContact, postNewContact:postNewContact};
 
 });
